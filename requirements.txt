@@ -1,0 +1,8 @@
+Flask==1.1.2
+Jinja2==2.11.2
+Werkzeug==1.0.1
+SQLAlchemy==1.3.17
+Flask-SQLAlchemy==2.4.3
+flask-googlemaps==0.4.0
+requests==2.23.0
+Unidecode==1.1.1

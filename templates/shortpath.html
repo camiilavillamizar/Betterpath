@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% block title %} Generate {% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Ruta más óptima!</h1>
+    {% if polyline%}
+    <div class="container-fluid">
+        {% with plinemap=googlemap_obj("plinemap", markers[0]['lat'], markers[0]['lng'],zoom=13.5, markers=markers, polylines=[polyline], style="height:500px;width:100%;") %}
+        {{plinemap.html}}
+        {{plinemap.js}}
+        {% endwith %}
+    </div>
+    <div class="row">
+        <div class="column column-30">
+            <table>
+                <thead>
+                    <tr>
+                        <h4>
+                            <th>Ruta</th>
+                        </h4>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for i in precorrido %}
+                    <tr>
+                        <td>{{i}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+        <div class="column">
+            <div class="infobox">
+                <p class="textinfor">Duración en minutos</p>
+                <p class="infor"><strong>{{tiempomin}}</strong></p>
+                <p class="textinfor">Distancia en metros</p>
+                <p class="infor"><strong>{{distancia}}</strong></p>
+            </div>
+        </div>
+
+
+    </div>
+
+    {%else%}
+    <div class="container-fluid">
+        {{googlemap("simple-map", 10.393228, -75.483231, style="height:450px;width:100%;")}}
+    </div>
+    <blockquote>
+        <p><em>Vaya! No hay lugares por visitar... <strong>Agregalos</strong></em></p>
+    </blockquote>
+    {% endif %}
+</div>
+{% endblock %}

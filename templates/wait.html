@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% block title %} Generate {% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Ruta más óptima!</h1>
+    <h5>Ya casi, solo escoge el tiempo máximo que puedes esperar para el calculo.</h5>
+    <h4>Puede que esto tome menos tiempo!</h4>
+
+    {%if option=="walking" or option == "driving"%}
+    <div class="row"><a class="button" href="/shortpath\{{option}}\5"
+            onclick='alert("Espere, por favor, máximo 5 minutos y se le mostrará la ruta más óptima ")'>5 minutos</a>
+    </div>
+    <div class="row"><a class="button" href="/shortpath\{{option}}\7"
+            onclick='alert("Espere, por favor, máximo 7 minutos y se le mostrará la ruta más óptima ")'>7 minutos</a>
+    </div>
+    <div class="row"><a class="button" href="/shortpath\{{option}}\10"
+            onclick='alert("Espere, por favor, máximo 10 minutos y se le mostrará la ruta más óptima ")'>10 minutos</a>
+    </div>
+    {%else%}
+    <div class="row"><a class="button" href="/shortpath\driving\5"
+            onclick='alert("Espere, por favor, máximo 5 minutos y se le mostrará la ruta más óptima ")'>5 minutos</a>
+    </div>
+    <div class="row"><a class="button" href="/shortpath\driving\7"
+            onclick='alert("Espere, por favor, máximo 7 minutos y se le mostrará la ruta más óptima ")'>7 minutos</a>
+    </div>
+    <div class="row"><a class="button" href="/shortpath\driving\10"
+            onclick='alert("Espere, por favor, máximo 10 minutos y se le mostrará la ruta más óptima ")'>10 minutos</a>
+    </div>
+    {%endif%}
+
+
+</div>
+{% endblock %}

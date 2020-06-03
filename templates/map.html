@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block title %} Generate {% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Mapa y lugares a visitar!</h1>
+    {% if data %}
+    <div class="container-fluid">
+        {% with map=googlemap_obj("another-map", data[0]['lat'], data[0]['lng'],zoom=13.5 , markers=data,style="height:500px;width:100%;") %}
+            {{map.html}}
+            {{map.js}}
+        {% endwith %}
+    </div>
+    <blockquote>
+        <p><em>En caso que no veas el lugar marcado... <strong>Ve al inicio, elimina y trata de poner una 
+            dirección más fiel al lugar que deseas.</strong></em></p>
+    </blockquote>
+    {%else%}
+    <div class="container-fluid">
+        {{googlemap("simple-map", 10.393228, -75.483231,style="height:450px;width:100%;")}}
+    </div>
+    <blockquote>
+		<p><em>Vaya! No hay lugares por visitar... <strong>Agregalos</strong></em></p>
+	</blockquote>
+    {% endif %}
+</div>
+{% endblock %}

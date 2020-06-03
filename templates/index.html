@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+{% block title %} Generate {% endblock %}
+{% block content %}
+<div class="container">
+	<h1>¡Halla la ruta más corta para entregar todos tus pedidos!</h1>
+	<h5>Escriba varios lugares donde tenga que ir y podrá ver la mejor ruta para visitar esos lugares.</h5>
+
+	<!-- Form -->
+	<div class="row">
+		<form action="{{ url_for('add_place') }}" method="POST" class="column column-60">
+			<fieldset>
+				{% if data %}
+				<label for="string">Direccion del lugar</label>
+				<input type="text" name="place" id="place" placeholder="Ex. Edificio El Coral Bocagrande" required autofocus>
+				<input type="submit" value="Save" />
+				{%else%}
+				<label for="string">Punto de abastecimiento</label>
+				<input type="text" name="place" id="place" placeholder="Ex. CC Mall Plaza" required autofocus>
+				<input type="submit" value="Save" />
+				{% endif%}
+			</fieldset>
+		</form>
+	</div>
+	<a class="button" href="/deleteall">Borrar todos los lugares</a>
+	<!-- Table -->
+	{% if data %}
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Direccion</th>
+				<th>Latitud</th>
+				<th>Longitud</th>
+				<th>Operación</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for i in data %}
+			<tr>
+				<td>{{ i.id }}</td>
+				<td>{{ i.place }}</td>
+				<td>{{ i.lat }}</td>
+				<td>{{ i.lngd }}</td>
+				<td><a href="/delete\{{i.id}}">Eliminar</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+	<!-- Or message -->
+	<blockquote>
+		<p><em>No hay lugares por visitar... <strong>Agregalos</strong></em></p>
+	</blockquote>
+	{% endif %}
+</div>
+{% endblock %}

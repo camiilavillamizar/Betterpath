@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ENG">
+	<head>
+		<meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - Better Route!</title>
+   
+
+		<!-- Import Miligram lib from CDN -->
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+
+    <!-- Import main CSS from lib -->
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css?1.2" media="all" >
+    
+		<!--<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">-->
+	</head>
+<body>
+
+  {% block content %}{% endblock %}
+
+  <!-- Links -->
+  <section class="container">
+    <h4>Other options</h4>
+    <ul>
+			<li><a href="{{ url_for('index') }}">Agregar lugares</a></li>
+			<li><a href="{{ url_for('showmap') }}">Ver lugares en el mapa</a></li>
+			<li><a href="/shortpath\driving">Calcular y mostrar ruta más optima manejando</a></li>
+			<li><a href="/shortpath\walking">Calcular y mostrar ruta más optima caminando</a></li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <section class="container">
+    <blockquote>
+      <p><em>Do you like this? Get the code at <a href="#">Github</a></em></p>
+    </blockquote>
+  </section>
+
+</body>
+
+  {% block scripts %}{% endblock %}
+</html>
